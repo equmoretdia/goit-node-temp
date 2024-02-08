@@ -1,12 +1,14 @@
 const express = require("express");
-// const logger = require("morgan");
+const logger = require("morgan");
 const cors = require("cors");
 
 const booksRouter = require("./routes/api/books");
 
 const app = express();
 
-// app.use(logger());
+const formatsLogger = app.get("env") === "development" ? "dev" : "short";
+
+app.use(logger(formatsLogger));
 app.use(cors());
 app.use(express.json());
 
@@ -20,4 +22,4 @@ app.use((err, req, res, next) => {
   res.status(500).json({ message: "Server error" });
 });
 
-app.listen(3000, () => console.log("Server running"));
+module.exports = app;

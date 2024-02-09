@@ -3,7 +3,7 @@ const Joi = require("joi");
 
 const books = require("../../models/books");
 
-const HttpError = require("../../helpers");
+const { HttpError } = require("../../helpers");
 
 const router = express.Router();
 

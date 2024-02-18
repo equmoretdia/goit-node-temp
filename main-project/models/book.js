@@ -24,6 +24,7 @@ const genreList = [
   "Comedy",
   "Satire",
   "Adventure",
+  "Technical",
 ];
 const dateRegexp = /^\d{2}-\d{2}-\d{4}$/;
 
@@ -53,13 +54,17 @@ const Book = model("book", bookSchema);
 const addSchema = Joi.object({
   title: Joi.string().required(),
   author: Joi.string().required(),
-  favotite: Joi.boolean(),
-  genres: Joi.string()
+  favorite: Joi.boolean(),
+  genre: Joi.string()
     .valid(...genreList)
     .required(),
   date: Joi.string().pattern(dateRegexp).required(),
 });
 
-const schemas = { addSchema };
+const updateFavoriteSchema = Joi.object({
+  favorite: Joi.boolean().required(),
+});
+
+const schemas = { addSchema, updateFavoriteSchema };
 
 module.exports = { Book, schemas };

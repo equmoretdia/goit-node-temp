@@ -31,7 +31,7 @@ const bookSchema = new Schema(
   {
     title: { type: String, required: true },
     author: { type: String, required: true },
-    favotite: { type: Boolean, default: false },
+    favorite: { type: Boolean, default: false },
     genre: {
       type: String,
       enum: genreList,
@@ -55,7 +55,7 @@ const addSchema = Joi.object({
   author: Joi.string().required(),
   favotite: Joi.boolean(),
   genres: Joi.string()
-    .validate(...genreList)
+    .valid(...genreList)
     .required(),
   date: Joi.string().pattern(dateRegexp).required(),
 });

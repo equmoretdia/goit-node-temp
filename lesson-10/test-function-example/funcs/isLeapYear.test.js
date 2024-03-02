@@ -58,7 +58,7 @@ describe("test isLeapYear function", () => {
     expect(() => isLeapYear(2008.4)).toThrow("year must be integer");
   });
 
-  test("() - error 'year must be exist'", () => {
+  test("() - error 'please enter year'", () => {
     expect(() => isLeapYear()).toThrow("please enter year");
   });
 

@@ -10,6 +10,9 @@
       ws.onopen = () => {
         console.log("Successfully connected");
       };
+      ws.onmessage = (event) => {
+        console.log(event.data);
+      };
     </script>
   </body>
 </html>

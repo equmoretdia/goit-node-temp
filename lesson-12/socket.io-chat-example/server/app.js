@@ -11,6 +11,9 @@ const io = new Server(httpServer, {
 
 io.on("connection", (socket) => {
   console.log("New frontend is connected");
+  socket.on("chat-message", (message) => {
+    socket.broadcast.emit("chat-message", message);
+  });
 });
 
 httpServer.listen(3001, () => {
